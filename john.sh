@@ -12,10 +12,6 @@ wget https://raw.githubusercontent.com/openwall/john/bleeding-jumbo/run/office2j
 # Make sure the file has the right permissions to be executed
 chmod +x office2john.py
 
-# Download the rockyou.txt password list
-echo Downloading the rockyou.txt password list...
-wget -q https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt -O rockyou.txt
-
 # Ask for the full path of the protected Word document
 while true; do
     read -p "Enter the full path of the protected Word document: " doc_path
