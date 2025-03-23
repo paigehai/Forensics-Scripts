@@ -12,6 +12,9 @@ wget https://raw.githubusercontent.com/openwall/john/bleeding-jumbo/run/office2j
 # Make sure the file has the right permissions to be executed
 chmod +x office2john.py
 
+# Download the rockyou.txt password list
+wget -q https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt -O rockyou.txt
+
 # Ask for the full path of the protected Word document
 while true; do
     read -p "Enter the full path of the protected Word document: " doc_path
@@ -37,19 +40,14 @@ fi
 
 echo "Hash file created: hash.txt"
 
-# Remove prefix's from the hash file
-echo "Removing prefix from hash.txt..."
+# Display the contents of hash.txt
 sed -i 's/^[^:]*://g' hash.txt
-echo "Prefix removed from hash.txt."
 
-# Use John the Ripper to crack the password from the hash.txt file
-echo "Starting password cracking process with John the Ripper..."
-john --format=office-opencl hash.txt
-if [ $? -ne 0 ]; then
-    echo "An error occurred during the password cracking process."
-    exit 1
-fi
+# Step 2: Crack the password using John the Ripper and its password list on a 2013 word document
+echo "Cracking the password using John the Ripper..."
 
-# Step 6: Display the cracked password
-echo "Password cracking completed. Displaying cracked password..."
+# Run John
+john --wordlist=rockyou.txt hash.txt
+
+# Show results
 john --show hash.txt
