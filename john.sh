@@ -13,6 +13,7 @@ wget https://raw.githubusercontent.com/openwall/john/bleeding-jumbo/run/office2j
 chmod +x office2john.py
 
 # Download the rockyou.txt password list
+echo Downloading the rockyou.txt password list...
 wget -q https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt -O rockyou.txt
 
 # Ask for the full path of the protected Word document
@@ -42,12 +43,3 @@ echo "Hash file created: hash.txt"
 
 # Display the contents of hash.txt
 sed -i 's/^[^:]*://g' hash.txt
-
-# Step 2: Crack the password using John the Ripper and its password list on a 2013 word document
-echo "Cracking the password using John the Ripper..."
-
-# Run John
-john --format=office --wordlist=rockyou.txt hash.txt
-
-# Show results
-john --show hash.txt
