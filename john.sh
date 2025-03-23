@@ -47,7 +47,7 @@ sed -i 's/^[^:]*://g' hash.txt
 echo "Cracking the password using John the Ripper..."
 
 # Run John
-john --wordlist=rockyou.txt hash.txt
+john --format=office --wordlist=rockyou.txt hash.txt
 
 # Show results
 john --show hash.txt
