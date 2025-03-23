@@ -49,7 +49,7 @@ fi
 
 # Perform the bit-by-bit copy using dd
 echo "Creating bit-by-bit copy of the USB drive..."
-sudo dd if="$base_device" of="$output_file" bs=1024 status=progress
+sudo dd if="$base_device" of="$output_file" bs=1024 count=204800 status=progress
 
 # Check for dd errors
 if [ $? -ne 0 ]; then
