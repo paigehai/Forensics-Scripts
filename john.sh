@@ -40,7 +40,7 @@ sed -i 's/^[^:]*://g' hash.txt
 
 # Use John the Ripper to crack the password from the hash.txt file
 echo "Starting password cracking process with John the Ripper..."
-john --format=office hash.txt
+john --format=office-opencl hash.txt
 
 # Step 6: Display the cracked password
 echo "Password cracking completed. Displaying cracked password..."
