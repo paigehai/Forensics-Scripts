@@ -26,6 +26,9 @@ fi
 echo "Found USB device: $usb_device"
 
 # Extract the partition name and the base device name
+usb_device=$(echo $usb_device | sed 's/└─//')
+
+# Extract the base device (e.g., /dev/sdb)
 base_device=$(echo $usb_device | sed 's/[0-9]*$//')
 
 # Unmount the related block device (base device or partition)
