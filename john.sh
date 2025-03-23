@@ -35,6 +35,9 @@ if [ ! -f hash.txt ]; then
     exit 1
 fi
 
+# Remove prefix's from the hash file
+sed -i 's/^[^:]*://g' hash.txt
+
 # Use John the Ripper to crack the password from the hash.txt file
 echo "Starting password cracking process with John the Ripper..."
 john --format=office hash.txt
