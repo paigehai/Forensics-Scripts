@@ -44,7 +44,7 @@ echo "Prefix removed from hash.txt."
 
 # Use John the Ripper to crack the password from the hash.txt file
 echo "Starting password cracking process with John the Ripper..."
-john --format=office hash.txt
+john --format=office2013 hash.txt
 if [ $? -ne 0 ]; then
     echo "An error occurred during the password cracking process."
     exit 1
