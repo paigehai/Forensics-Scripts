@@ -6,7 +6,7 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-# Ask the user to input the label of the USB device (e.g., PAIGESUSB)
+# Ask the user to input the label of the USB device
 read -p "Enter the label of the USB device: " usb_label
 
 # List block devices and search for the USB device label
@@ -35,7 +35,7 @@ umount "$usb_device"
 # Wait for the unmount to complete
 sleep 2
 
-# Ask where the image should be stored (e.g., Desktop)
+# Ask where the image should be stored
 read -p "Enter the output file path for the disk image: " output_file
 
 # Verify that the output file path is not empty
